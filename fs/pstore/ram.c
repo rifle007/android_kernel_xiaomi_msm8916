@@ -463,7 +463,10 @@ static void  ramoops_of_init(struct platform_device *pdev)
 	pdata->console_size = console;
 	pdata->annotate_size = annotate;
 	pdata->record_size = record;
+<<<<<<< HEAD
 	pdata->ftrace_size = ramoops_ftrace_size;
+=======
+>>>>>>> 38b51f3... fs/pstore: Enable pstore/ramoops dump for kernel panics
 	pdata->dump_oops = (int)oops;
 }
 #else
@@ -516,7 +519,7 @@ static int ramoops_probe(struct platform_device *pdev)
 		pdata->console_size = rounddown_pow_of_two(pdata->console_size);
 	if (pdata->ftrace_size && !is_power_of_2(pdata->ftrace_size))
 		pdata->ftrace_size = rounddown_pow_of_two(pdata->ftrace_size);
-	if (pdata->annotate_size && !is_power_of_2(pdata->annotate_size))
+	if (!is_power_of_2(pdata->annotate_size))
 		pdata->annotate_size =
 			rounddown_pow_of_two(pdata->annotate_size);
 
