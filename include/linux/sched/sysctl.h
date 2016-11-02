@@ -43,6 +43,7 @@ extern unsigned int sysctl_sched_ravg_hist_size;
 extern unsigned int sysctl_sched_freq_account_wait_time;
 extern unsigned int sysctl_sched_migration_fixup;
 extern unsigned int sysctl_sched_heavy_task_pct;
+extern unsigned int sysctl_sched_enable_power_aware;
 
 #if defined(CONFIG_SCHED_FREQ_INPUT) || defined(CONFIG_SCHED_HMP)
 extern unsigned int sysctl_sched_init_task_load_pct;
@@ -65,6 +66,10 @@ extern int sysctl_sched_upmigrate_min_nice;
 extern unsigned int sysctl_sched_prefer_idle;
 extern unsigned int sysctl_sched_powerband_limit_pct;
 extern unsigned int sysctl_sched_boost;
+
+#if defined(CONFIG_SCHED_FREQ_INPUT)
+extern unsigned int sysctl_sched_new_task_windows;
+#endif
 
 #else /* CONFIG_SCHED_HMP */
 
@@ -93,7 +98,8 @@ extern unsigned int sysctl_sched_nr_migrate;
 extern unsigned int sysctl_sched_time_avg;
 extern unsigned int sysctl_timer_migration;
 extern unsigned int sysctl_sched_shares_window;
-
+extern unsigned int sysctl_sched_yield_sleep_duration;
+extern int sysctl_sched_yield_sleep_threshold;
 int sched_proc_update_handler(struct ctl_table *table, int write,
 		void __user *buffer, size_t *length,
 		loff_t *ppos);

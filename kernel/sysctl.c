@@ -441,11 +441,25 @@ static struct ctl_table kern_table[] = {
 		.proc_handler	= sched_hmp_proc_update_handler,
 	},
 	{
+		.procname       = "sched_new_task_windows",
+		.data           = &sysctl_sched_new_task_windows,
+		.maxlen         = sizeof(unsigned int),
+		.mode           = 0644,
+		.proc_handler   = sched_window_update_handler,
+	},
+	{
 		.procname	= "sched_boost",
 		.data		= &sysctl_sched_boost,
 		.maxlen		= sizeof(unsigned int),
 		.mode		= 0644,
 		.proc_handler	= sched_boost_handler,
+	},
+	{
+		.procname	= "sched_enable_power_aware",
+		.data		= &sysctl_sched_enable_power_aware,
+		.maxlen		= sizeof(unsigned int),
+		.mode		= 0644,
+		.proc_handler	= proc_dointvec,
 	},
 #endif	/* CONFIG_SCHED_HMP */
 #ifdef CONFIG_SCHED_DEBUG
@@ -475,6 +489,20 @@ static struct ctl_table kern_table[] = {
 		.proc_handler	= sched_proc_update_handler,
 		.extra1		= &min_wakeup_granularity_ns,
 		.extra2		= &max_wakeup_granularity_ns,
+	},
+	{
+		.procname	= "sched_yield_sleep_threshold",
+		.data		= &sysctl_sched_yield_sleep_threshold,
+		.maxlen		= sizeof(int),
+		.mode		= 0644,
+		.proc_handler	= proc_dointvec,
+	},
+	{
+		.procname	= "sched_yield_sleep_duration",
+		.data		= &sysctl_sched_yield_sleep_duration,
+		.maxlen		= sizeof(unsigned int),
+		.mode		= 0644,
+		.proc_handler	= proc_dointvec,
 	},
 #ifdef CONFIG_SMP
 	{
