@@ -1228,6 +1228,15 @@ config CC_OPTIMIZE_FOR_SIZE
 
 	  If unsure, say N.
 
+config CC_USE_CCACHE
+	bool "Optimize compiling time"
+	default n
+	help
+	  Enabling this option will use "ccache" for compiling thus reducing
+	  compile time dramatically.
+
+	  If unsure, say N.
+
 config SYSCTL
 	bool
 
