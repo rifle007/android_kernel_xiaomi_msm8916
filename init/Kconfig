@@ -1146,6 +1146,12 @@ config SCHED_AUTOGROUP
 	  desktop applications.  Task group autogeneration is currently based
 	  upon task session.
 
+config SCHED_FEATURES_SYSFS
+	bool "Sysfs interface for ARCH_POWER and GENTLE_FAIR_SLEEPER"
+	default n
+	help
+	  Enable userspace sysfs interface for ARCH_POWER and GENTLE_FAIR_SLEEPER
+
 config MM_OWNER
 	bool
 
