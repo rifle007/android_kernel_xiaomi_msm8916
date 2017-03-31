@@ -100,7 +100,7 @@ version2() {
 ## start ##
 
 ## copy dtb for ido /// add # to disable
-sudo cp -r ./arch/arm/boot/dts/msm8939-qrd-wt88509_64.dtb ./arch/arm64/boot/dts/msm8939-qrd-wt88509_64.dtb
+# sudo cp -r ./arch/arm/boot/dts/msm8939-qrd-wt88509_64.dtb ./arch/arm64/boot/dts/msm8939-qrd-wt88509_64.dtb
 
 ## copy Anykernel2 from /root
 
