@@ -88,6 +88,7 @@ endif
 obj-$(CONFIG_TOUCHSCREEN_IST30XX) += ist30xxc.o ist30xxc_misc.o ist30xxc_sys.o ist30xxc_update.o ist30xxc_tracking.o
 
 obj-$(CONFIG_TOUCHSCREEN_MSTAR21XX)	+= msg21xx_ts.o
+
 obj-$(CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_RMI4_DEV)	+= synaptics_rmi_dev.o
 obj-$(CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_FW_UPDATE) 	+= synaptics_fw_update.o
 obj-$(CONFIG_TOUCHSCREEN_SYNAPTICS_I2C_RMI4)		+= synaptics_i2c_rmi4.o
