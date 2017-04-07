@@ -67,8 +67,6 @@ replace_line init.qcom.power.rc "write /sys/devices/system/cpu/cpu4/cpufreq/inte
 
 replace_line init.qcom.power.rc "setprop sys.io.scheduler" '    setprop sys.io.scheduler "bfq"';
 
-append_file fstab.qcom "zram0" zram;
-append_file init.qcom.rc "swapon" initswap;
 
 ## init.rc
 #backup_file init.rc;
