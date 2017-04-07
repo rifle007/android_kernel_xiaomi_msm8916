@@ -355,11 +355,16 @@ CHECK		= sparse
 
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
-CFLAGS_MODULE   =
-AFLAGS_MODULE   =
+COMMON_OPT_FLAGS	= -march=armv8-a+crc+crypto+fp+simd -mtune=cortex-a53 -fmodulo-sched -fmodulo-sched-allow-regmoves -pipe \
+GRAPHITE	= -fgraphite -fgraphite-identity -floop-parallelize-all \
+			  -ftree-loop-linear -floop-interchange \
+			  -floop-strip-mine -floop-block \
+			  -floop-flatten
+CFLAGS_MODULE	= $(MODFLAGS) $(COMMON_OPT_FLAGS) $(GRAPHITE) -fno-pic
+AFLAGS_MODULE	= $(MODFLAGS) $(COMMON_OPT_FLAGS) $(GRAPHITE) -fno-pic
 LDFLAGS_MODULE  =
-CFLAGS_KERNEL	=
-AFLAGS_KERNEL	=
+CFLAGS_KERNEL	= $(COMMON_OPT_FLAGS) $(GRAPHITE)
+AFLAGS_KERNEL	= $(COMMON_OPT_FLAGS) $(GRAPHITE)
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
 
