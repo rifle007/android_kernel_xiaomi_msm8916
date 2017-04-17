@@ -908,11 +908,20 @@ EXPORT_SYMBOL(add_timer);
  */
 void add_timer_on(struct timer_list *timer, int cpu)
 {
-	struct tvec_base *base = per_cpu(tvec_bases, cpu);
+	struct tvec_base *new_base = per_cpu_ptr(&tvec_bases, cpu);
+  struct tvec_base *base;
 	unsigned long flags;
 
 	BUG_ON(timer_pending(timer) || !timer->function);
-	spin_lock_irqsave(&base->lock, flags);
+	
+     base = lock_timer_base(timer, &flags);
+     if (base != new_base) {
+             timer->flags |= TIMER_MIGRATING;
+             spin_unlock(&base->lock);
+             base = new_base;
+             spin_lock(&base->lock);
+     }
+
 	timer_set_base(timer, base);
 	debug_activate(timer, timer->expires);
 	internal_add_timer(base, timer);
