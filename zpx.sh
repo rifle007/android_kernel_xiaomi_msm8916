@@ -27,7 +27,7 @@ export USE_CCACHE=1
 #@@@@@@@@@@@@@@@@@@@@@@ DEFINITIONS BEGIN @@@@@@@@@@@@@@@@@@@@@@@@@@@#
 ##### Tool-chain, you should get it yourself which tool-chain 
 ##### you would like to use
-KERNEL_TOOLCHAIN=/root/aarch64-linux-android-4.9-kernel/bin/$TOOL_CHAIN_ARM
+KERNEL_TOOLCHAIN=/root/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9/bin/$TOOL_CHAIN_ARM
 
 ## This script should be inside the kernel-code directory
 KERNEL_DIR=$PWD
@@ -67,6 +67,10 @@ case $key in
     CLEAN_BUILD=YES
     #shift # past argument
     ;;
+    dtb)
+    sudo rm -rf ./arch/arm/boot/dts/msm8939-qrd-wt88509_64.dtb
+    echo " dtb deleted "
+    ;;
     *)
             # unknown option
     ;;
@@ -100,7 +104,8 @@ version2() {
 ## start ##
 
 ## copy dtb for ido /// add # to disable
-# sudo cp -r ./arch/arm/boot/dts/msm8939-qrd-wt88509_64.dtb ./arch/arm64/boot/dts/msm8939-qrd-wt88509_64.dtb
+sudo rm -rf ./arch/arm64/boot/dts/msm8939-qrd-wt88509_64.dtb
+sudo cp -r ./arch/arm/boot/dts/msm8939-qrd-wt88509_64.dtb ./arch/arm64/boot/dts/msm8939-qrd-wt88509_64.dtb
 
 ## copy Anykernel2 from /root
 
