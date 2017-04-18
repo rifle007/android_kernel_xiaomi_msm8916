@@ -69,7 +69,7 @@ case $key in
     ;;
     dtb)
     sudo rm -rf ./arch/arm/boot/dts/msm8939-qrd-wt88509_64.dtb
-    sudo ln -s ./arch/arm/boot/dts/msm8939-qrd-wt88509_64.dtb ./arch/arm64/boot/dts/msm8939-qrd-wt88509_64.dtb
+    
     echo " dtb deleted "
     ;;
     *)
@@ -106,7 +106,6 @@ version2() {
 
 ## copy dtb for ido /// add # to disable
 sudo rm -rf ./arch/arm/boot/dts/msm8939-qrd-wt88509_64.dtb
-sudo ln -s ./arch/arm/boot/dts/msm8939-qrd-wt88509_64.dtb ./arch/arm64/boot/dts/msm8939-qrd-wt88509_64.dtb
 
 ## copy Anykernel2 from /root
 
@@ -148,6 +147,7 @@ fi
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
 #@@@@@@@@@@@@@@@@@@ END @@@@@@@@@@@@@@@@@@@@@#
 
+sudo ln -sf /root/r3/andro*/arch/arm/boot/dts/msm8939-qrd-wt88509_64.dtb /root/r3/andro*/arch/arm64/boot/dts/msm8939-qrd-wt88509_64.dtb
 
 #@@@@@@@@@@@@@@@@ AnyKernel2 @@@@@@@@@@@@@@@@@@@@@@#
 # Environment variables for flashable zip creation (AnyKernel2)
