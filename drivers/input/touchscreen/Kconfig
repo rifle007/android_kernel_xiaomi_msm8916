@@ -1108,6 +1108,6 @@ config TOUCHSCREEN_IT7260_I2C
 
 config STATE_NOTIFIER
         bool "State Notifier"
-	default y
+	default n
 
 endif
