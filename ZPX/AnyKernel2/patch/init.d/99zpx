@@ -13,7 +13,7 @@ echo 'Y' > /sys/module/adreno_idler/parameters/adreno_idler_active
 echo '8000' > /sys/module/adreno_idler/parameters/adreno_idler_idleworkloads
 echo '10' > /sys/module/adreno_idler/parameters/adreno_idler_idlewait
 # echo '1' > /sys/kernel/power_suspend/power_suspend_state
-echo '0' > /proc/sys/vm/swappiness
+# echo '0' > /proc/sys/vm/swappiness
 echo '1' > /sys/module/snd_soc_msm8x16_wcd/parameters/high_perf_mode
 sleep 20
 
