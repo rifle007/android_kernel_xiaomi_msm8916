@@ -2025,9 +2025,7 @@ static int path_lookupat(int dfd, const char *name,
 		}
 	}
 
-<<<<<<< HEAD
 out:
-=======
 	if (!err) {
 		struct super_block *sb = nd->inode->i_sb;
 		if (sb->s_flags & MS_RDONLY) {
@@ -2036,7 +2034,6 @@ out:
 		}
 	}
 
->>>>>>> 9b0b1b1... kernel: Only expose su when daemon is running
 	if (base)
 		fput(base);
 
