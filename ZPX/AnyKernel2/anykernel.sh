@@ -101,13 +101,6 @@ replace_line init.qcom.power.rc "setprop sys.io.scheduler" '    setprop sys.io.s
 #patch_fstab fstab.tuna /data ext4 options "nomblk_io_submit,data=writeback" "nosuid,nodev,noatime,errors=panic,nomblk_io_submit,data=writeback,noauto_da_alloc";
 #append_file fstab.tuna "usbdisk" fstab;
 
-# Set permissive on boot - but only if not already permissive
-cmdfile=`ls $split_img/*-cmdline`;
-cmdtmp=`cat $cmdfile`;
-case "$cmdtmp" in
-  *selinux=permissive*) ;;
-  *) rm $cmdfile; echo "androidboot.selinux=permissive $cmdtmp" > $cmdfile;;
-esac;
 
 ## end ramdisk changes
 
